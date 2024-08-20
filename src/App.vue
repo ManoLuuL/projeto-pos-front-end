@@ -6,8 +6,6 @@ const authStore = useAuthStore();
 const handleLogout = () => {
   authStore.logout();
 }
-
-
 </script>
 
 <template>
@@ -15,7 +13,7 @@ const handleLogout = () => {
     <nav class="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white shadow-md">
       <div class="container mx-auto flex justify-between items-center">
         <div>
-          <router-link to="/" class="text-2xl font-bold hover:text-gray-300">VueApp</router-link>
+          <router-link to="/" class="text-2xl font-bold hover:text-gray-300">Posts App</router-link>
         </div>
         <div class="space-x-4">
           <router-link v-if="!authStore.isLoggedIn" to="/"
