@@ -5,7 +5,6 @@ import axios from "axios";
 export const usePostsStore = defineStore("posts", () => {
 	const db = ref(null);
 	const posts = ref([]);
-	const comments = ref([]);
 	const loading = ref(true);
 	const errors = ref([]);
 
@@ -18,10 +17,6 @@ export const usePostsStore = defineStore("posts", () => {
 
 				if (!db.objectStoreNames.contains("posts")) {
 					db.createObjectStore("posts", { keyPath: "id" });
-				}
-
-				if (!db.objectStoreNames.contains("comments")) {
-					db.createObjectStore("comments", { keyPath: "id" });
 				}
 			};
 
@@ -45,18 +40,6 @@ export const usePostsStore = defineStore("posts", () => {
 			saveToIndexedDB("posts", posts.value);
 		} catch (error) {
 			errors.value.push("Erro ao buscar posts da API");
-		}
-	};
-
-	const fetchCommentsFromAPI = async () => {
-		try {
-			const response = await axios.get(
-				"https://jsonplaceholder.typicode.com/comments",
-			);
-			comments.value = response.data;
-			saveToIndexedDB("comments", comments.value);
-		} catch (error) {
-			errors.value.push("Erro ao buscar comentários da API");
 		}
 	};
 
@@ -90,7 +73,6 @@ export const usePostsStore = defineStore("posts", () => {
 		db.value = await openDatabase();
 
 		const storedPosts = await fetchFromIndexedDB("posts");
-		const storedComments = await fetchFromIndexedDB("comments");
 
 		if (storedPosts.length) {
 			posts.value = storedPosts;
@@ -98,18 +80,11 @@ export const usePostsStore = defineStore("posts", () => {
 			await fetchPostsFromAPI();
 		}
 
-		if (storedComments.length) {
-			comments.value = storedComments;
-		} else {
-			await fetchCommentsFromAPI();
-		}
-
 		loading.value = false;
 	};
 
 	return {
 		posts,
-		comments,
 		errors,
 		loading,
 		init,

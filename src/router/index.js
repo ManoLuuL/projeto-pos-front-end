@@ -46,14 +46,14 @@ router.beforeEach((to, from, next) => {
 	const authStore = useAuthStore();
 
 	if (to.meta.requiresAuth && !authStore.isLoggedIn) {
-		next("/login"); // Redireciona para a página de login
+		next("/");
 	} else if (
-		(to.name === "login" || to.name === "register") &&
+		(to.name === "" || to.name === "register") &&
 		authStore.isLoggedIn
 	) {
-		next("/posts"); // Redireciona para a página de posts se já estiver logado
+		next("/posts");
 	} else {
-		next(); // Prossegue normalmente se as condições acima não forem atendidas
+		next();
 	}
 });
 export default router;
