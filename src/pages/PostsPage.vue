@@ -1,20 +1,21 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import api from '../services/api';
+import { onMounted } from 'vue';
+import { usePostsStore } from '../store/posts-comments-store';
 
-const posts = ref([]);
+
+const postsStore = usePostsStore();
 
 onMounted(async () => {
-    const response = await api.get('/posts');
-    posts.value = response.data;
+    await postsStore.init();
 });
+
 </script>
 
 <template>
     <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
         <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Posts para acompanhar</h1>
         <ul class="space-y-4">
-            <li v-for="post in posts" :key="post.id"
+            <li v-for="post in postsStore.posts" :key="post.id"
                 class="p-6 border border-gray-200 rounded-lg hover:shadow-md transition-shadow duration-300">
                 <h2 class="text-xl font-semibold text-gray-800">{{ post.title }}</h2>
                 <p class="text-gray-700 mt-2">{{ post.body }}</p>
