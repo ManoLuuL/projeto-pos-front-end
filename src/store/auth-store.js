@@ -22,7 +22,6 @@ export const useAuthStore = defineStore("auth", () => {
 	const checkAuth = () => {
 		const storedUser = localStorage.getItem("user");
 		if (storedUser) {
-			isLoggedIn.value = true;
 			user.value = JSON.parse(storedUser);
 		}
 	};
