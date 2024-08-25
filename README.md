@@ -1,3 +1,17 @@
+# PROJETO DE FRAMEWORK FRONT-END
+Esse projeto tem como intenção a avaliação do desenvolvimento e aprimoramento na linguagem Vue. O aluno deve desenvolver um projeto usando a tecnologia, usando uma api gratuita.
+A Api utilizada para esse projeto é a JSON Placeholder.
+
+## Tecnologias
+
+- **Vue.js:** O framework progressivo para JavaScript.
+- **Pinia:** Biblioteca de gerenciamento de estado.
+- **Vue Router:** Roteador oficial para Vue.js.
+- **Tailwind CSS:** Framework CSS utilitário para estilização.
+- **Axios:** Cliente HTTP baseado em Promises para o navegador.
+- **Vite:** Ferramenta de build de próxima geração.
+- **Bun:** Um novo bundler e runtime rápido, que pode ser utilizado como alternativa ao Node.js.
+
 ## Instalação
 
 Para executar este projeto localmente, siga os passos abaixo:
@@ -41,17 +55,3 @@ Ainda nessa tela temos como adicionar nosso comentario
 
 ### Outra opção na navbar é a de álbuns, onde podemos ver uma lista de álbuns
 ![image](https://github.com/user-attachments/assets/d264e860-2b76-49d2-bea1-60541a013c60)
-
-
-## Tecnologias
-
-- **Vue.js:** O framework progressivo para JavaScript.
-- **Pinia:** Biblioteca de gerenciamento de estado.
-- **Vue Router:** Roteador oficial para Vue.js.
-- **Tailwind CSS:** Framework CSS utilitário para estilização.
-- **Axios:** Cliente HTTP baseado em Promises para o navegador.
-- **Vite:** Ferramenta de build de próxima geração.
-- **Bun:** Um novo bundler e runtime rápido, que pode ser utilizado como alternativa ao Node.js.
-
-
-
