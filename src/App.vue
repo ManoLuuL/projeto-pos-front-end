@@ -24,6 +24,8 @@ const handleLogout = () => {
             class="hover:text-gray-300 transition-colors duration-300">Posts</router-link>
           <router-link v-if="authStore.isLoggedIn" to="/comments"
             class="hover:text-gray-300 transition-colors duration-300">Commentarios</router-link>
+          <router-link v-if="authStore.isLoggedIn" to="/albums"
+            class="hover:text-gray-300 transition-colors duration-300">Albums</router-link>
           <button v-if="authStore.isLoggedIn" @click="handleLogout"
             class="hover:text-gray-300 transition-colors duration-300">Logoff</button>
         </div>

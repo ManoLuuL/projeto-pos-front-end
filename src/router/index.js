@@ -4,6 +4,7 @@ import LoginPage from "../pages/LoginPage.vue";
 import RegisterPage from "../pages/RegisterPage.vue";
 import CommentsPage from "../pages/CommentsPage.vue";
 import UserProfilePage from "../pages/UserProfilePage.vue";
+import AlbumsPage from "../pages/AlbumsPage.vue";
 import { useAuthStore } from "../store/auth-store";
 
 const routes = [
@@ -35,6 +36,12 @@ const routes = [
 		component: CommentsPage,
 		meta: { requiresAuth: true },
 	},
+	{
+		path: "/albums",
+		name: "albums",
+		component: AlbumsPage,
+		meta: { requiresAuth: true },
+	},
 ];
 
 const router = createRouter({
@@ -42,7 +49,7 @@ const router = createRouter({
 	routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
 	const authStore = useAuthStore();
 
 	if (to.meta.requiresAuth && !authStore.isLoggedIn) {

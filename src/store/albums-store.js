@@ -3,21 +3,21 @@ import { ref } from "vue";
 import axios from "axios";
 import { API_URL } from "../services/api/consts";
 
-export const usePostsStore = defineStore("posts", () => {
+export const useAlbumStore = defineStore("albums", () => {
 	const db = ref(null);
-	const posts = ref([]);
+	const albums = ref([]);
 	const loading = ref(true);
 	const errors = ref([]);
 
 	const openDatabase = async () => {
 		return new Promise((resolve, reject) => {
-			const request = indexedDB.open("appDB", 1);
+			const request = indexedDB.open("albumsDB", 1);
 
 			request.onupgradeneeded = (event) => {
 				const db = event.target.result;
 
-				if (!db.objectStoreNames.contains("posts")) {
-					db.createObjectStore("posts", { keyPath: "id" });
+				if (!db.objectStoreNames.contains("albums")) {
+					db.createObjectStore("albums", { keyPath: "id" });
 				}
 			};
 
@@ -32,13 +32,13 @@ export const usePostsStore = defineStore("posts", () => {
 		});
 	};
 
-	const fetchPostsFromAPI = async () => {
+	const fetchAlbumsFromAPI = async () => {
 		try {
-			const response = await axios.get(`${API_URL}/posts`);
-			posts.value = response.data;
-			saveToIndexedDB("posts", posts.value);
+			const response = await axios.get(`${API_URL}/albums`);
+			albums.value = response.data;
+			saveToIndexedDB("albums", albums.value);
 		} catch (error) {
-			errors.value.push("Erro ao buscar posts da API");
+			errors.value.push("Erro ao buscar albums da API");
 		}
 	};
 
@@ -71,19 +71,19 @@ export const usePostsStore = defineStore("posts", () => {
 		loading.value = true;
 		db.value = await openDatabase();
 
-		const storedPosts = await fetchFromIndexedDB("posts");
+		const storedPosts = await fetchFromIndexedDB("albums");
 
 		if (storedPosts.length) {
-			posts.value = storedPosts;
+			albums.value = storedPosts;
 		} else {
-			await fetchPostsFromAPI();
+			await fetchAlbumsFromAPI();
 		}
 
 		loading.value = false;
 	};
 
 	return {
-		posts,
+		albums,
 		errors,
 		loading,
 		init,

@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue';
-import { usePostsStore } from '../store/posts-comments-store';
+import { usePostsStore } from '../store/posts-stores';
 
 
 const postsStore = usePostsStore();

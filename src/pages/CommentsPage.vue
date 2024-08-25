@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import { API_URL } from '../services/api/consts';
 
 const comments = ref([]);
 const newComment = ref({
@@ -10,7 +11,7 @@ const newComment = ref({
 });
 
 const fetchComments = async () => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/comments');
+    const response = await axios.get(`${API_URL}/comments`);
     comments.value = response.data.slice(0, 10);
 };
 
