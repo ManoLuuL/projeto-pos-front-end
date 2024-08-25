@@ -11,6 +11,7 @@ A Api utilizada para esse projeto é a JSON Placeholder.
 - **Axios:** Cliente HTTP baseado em Promises para o navegador.
 - **Vite:** Ferramenta de build de próxima geração.
 - **Bun:** Um novo bundler e runtime rápido, que pode ser utilizado como alternativa ao Node.js.
+- **Biome:** Um formatador rápido para JavaScript, TypeScript, JSX, e JSON que atinge 97% de compatibilidade com o Prettier, economizando tempo para o desenvolvedor e para o CI.
 
 ## Instalação
 
